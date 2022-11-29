@@ -36,9 +36,12 @@
             return this.iva;
         }
         //SETTER//----------------------------------------------------------------------------------
-        public void setCodice(int codice)
+        private int setCodice()
         {
-            this.codice = codice;
+
+            Random number = new Random();
+            return number.Next(0, 100000000);
+
         }
         public void setNome(string nome)
         {
@@ -63,9 +66,9 @@
         }
         //Costruttori----------------------------------------------------------------------------
 
-        public prodotto(int codice, string nome, string descrizione, double prezzo, int iva)
+        public prodotto( string nome, string descrizione, double prezzo, int iva)
         {
-            this.codice = codice;
+            this.codice = this.setCodice();
             this.nome = nome;
             this.descrizione = descrizione;
             this.prezzo = prezzo;
@@ -95,29 +98,17 @@
 
         }
 
-        public void creaCodice()
-
-        {
-            Random num1 = new Random(8);
-            for (int j = 0; j < 4; j++)
-            {
-                Console.WriteLine(num1.Next());
-            }
-
-
-        }
-
 
         public void stampaProdotto()
         {
-            int codice = getCodice();
+            
             string nome = getNome();
             string descrizione = getDescrizione();
             double prezzo = getPrezzo();
             int iva = getIva();
             Console.WriteLine("Info" + " " + nome + "----------------------");
             creaNomeEsteso();
-            Console.WriteLine("Codice prodotto:" + " " + codice);
+            Console.WriteLine("Codice prodotto:" + " " + this.codice);
             Console.WriteLine("Nome prodotto:" + " " + nome);
             Console.WriteLine("Descrizione prodotto:" + " " + descrizione);
             Console.WriteLine("Prezzo prodotto:" + " " + prezzo + "EUR");

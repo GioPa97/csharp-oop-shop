@@ -20,7 +20,7 @@ using CSharpShop;
 using System.Globalization;
 
 //Creo un prodotto e lo stampo//___________________________________________________
-prodotto prodottoUno = new prodotto(10,"pane", "alimentari", 3.00, 4);
+prodotto prodottoUno = new prodotto("pane", "alimentari", 3.00, 4);
 prodottoUno.stampaProdotto();
 
 //_________________________________________________________________________________
