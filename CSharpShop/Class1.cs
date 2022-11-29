@@ -7,6 +7,7 @@
         private string descrizione;
         private double prezzo;
         private int iva;
+        private double prezzoIvato;
 
         //GETTER//--------------------------------------------------------------------------------
         public int getCodice()
@@ -24,6 +25,11 @@
         public double getPrezzo()
         {
             return this.prezzo;
+        }
+
+        public double getPrezzoIvato()
+        {
+            return this.prezzoIvato;
         }
         public int getIva()
         {
@@ -46,6 +52,11 @@
         {
             this.prezzo = prezzo;
         }
+
+        public void setPrezzoIva(double prezzoIvato)
+        {
+            this.prezzoIvato = prezzoIvato;
+        }
         public void setIva(int iva)
         {
             this.iva = iva;
@@ -63,18 +74,24 @@
 
 
         //Metodi----------------------------------------------------------------------------------
-        public double calcolaprezzoIvato(double prezzo)
+        public void calcolaprezzoIvato()
         {
 
-            double prezzoivato = prezzo * 1.22f;
-            return prezzoivato;
+            int iva = getIva();
+            double prezzo = getPrezzo();
+            double percentualeIva = (prezzo * iva) / 100;
+            double prezzoIvato = prezzo + percentualeIva;
+
+            Console.WriteLine("Prezzo finale:" + " " + prezzoIvato + "EUR");
+            Console.WriteLine("");
+            Console.WriteLine("Di cui Iva:" + " " + percentualeIva);
         }
 
         public void creaNomeEsteso()
         {
             string codiceString = this.codice.ToString();
-            string nomeEsteso = codiceString += this.nome;
-
+            string nomeEsteso = codiceString + this.nome;
+            Console.WriteLine("Nome esteso:"+nomeEsteso);
 
         }
 
@@ -99,11 +116,13 @@
             double prezzo = getPrezzo();
             int iva = getIva();
             Console.WriteLine("Info" + " " + nome + "----------------------");
+            creaNomeEsteso();
             Console.WriteLine("Codice prodotto:" + " " + codice);
             Console.WriteLine("Nome prodotto:" + " " + nome);
             Console.WriteLine("Descrizione prodotto:" + " " + descrizione);
-            Console.WriteLine("Prezzo prodotto:" + " " + prezzo +"€");
+            Console.WriteLine("Prezzo prodotto:" + " " + prezzo + "EUR");
             Console.WriteLine("Iva prodotto:" + " " + iva + "%");
+            calcolaprezzoIvato();
             Console.WriteLine("____________________________________");
         }
 
