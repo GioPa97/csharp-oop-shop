@@ -6,7 +6,7 @@
         private string nome;
         private string descrizione;
         private double prezzo;
-        private int iva;
+        private float iva;
         private double prezzoIvato;
 
         //GETTER//--------------------------------------------------------------------------------
@@ -31,7 +31,7 @@
         {
             return this.prezzoIvato;
         }
-        public int getIva()
+        public float getIva()
         {
             return this.iva;
         }
@@ -53,20 +53,23 @@
         }
         public void setPrezzo(double prezzo)
         {
+            Math.Round(prezzo, 2);
             this.prezzo = prezzo;
         }
 
         public void setPrezzoIva(double prezzoIvato)
         {
+            Math.Round(prezzoIvato, 2);
             this.prezzoIvato = prezzoIvato;
         }
-        public void setIva(int iva)
+        public void setIva(float iva)
         {
+            Math.Round(iva, 2);
             this.iva = iva;
         }
         //Costruttori----------------------------------------------------------------------------
 
-        public prodotto( string nome, string descrizione, double prezzo, int iva)
+        public prodotto( string nome, string descrizione, double prezzo, float iva)
         {
             this.codice = this.setCodice();
             this.nome = nome;
@@ -77,20 +80,20 @@
 
 
         //Metodi----------------------------------------------------------------------------------
-        public void calcolaprezzoIvato()
+        private void calcolaprezzoIvato()
         {
 
-            int iva = getIva();
+            float iva = getIva();
             double prezzo = getPrezzo();
-            double percentualeIva = (prezzo * iva) / 100;
-            double prezzoIvato = prezzo + percentualeIva;
+            double percentualeIva = Math.Round((prezzo * iva) / 100,2);
+            double prezzoIvato = Math.Round(prezzo + percentualeIva,2);
 
             Console.WriteLine("Prezzo finale:" + " " + prezzoIvato + "EUR");
             Console.WriteLine("");
             Console.WriteLine("Di cui Iva:" + " " + percentualeIva);
         }
 
-        public void creaNomeEsteso()
+        private void creaNomeEsteso()
         {
             string codiceString = this.codice.ToString();
             string nomeEsteso = codiceString + this.nome;
@@ -104,8 +107,8 @@
             
             string nome = getNome();
             string descrizione = getDescrizione();
-            double prezzo = getPrezzo();
-            int iva = getIva();
+             prezzo = getPrezzo();
+            float iva = getIva();
             Console.WriteLine("Info" + " " + nome + "----------------------");
             creaNomeEsteso();
             Console.WriteLine("Codice prodotto:" + " " + this.codice);
