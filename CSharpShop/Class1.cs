@@ -5,7 +5,7 @@
         private int codice;
         private string nome;
         private string descrizione;
-        private float prezzo;
+        private double prezzo;
         private int iva;
 
         //GETTER//--------------------------------------------------------------------------------
@@ -21,7 +21,7 @@
         {
             return this.descrizione;
         }
-        public float getPrezzo()
+        public double getPrezzo()
         {
             return this.prezzo;
         }
@@ -42,7 +42,7 @@
         {
             this.descrizione = descrizione;
         }
-        public void setPrezzo(float prezzo)
+        public void setPrezzo(double prezzo)
         {
             this.prezzo = prezzo;
         }
@@ -52,21 +52,21 @@
         }
         //Costruttori----------------------------------------------------------------------------
 
-        public prodotto()
+        public prodotto(int codice, string nome, string descrizione, double prezzo, int iva)
         {
-            int codice;
-            string nome;
-            string descrizione;
-            float prezzo;
-            int iva;
+            this.codice = codice;
+            this.nome = nome;
+            this.descrizione = descrizione;
+            this.prezzo = prezzo;
+            this.iva = iva;
         }
 
 
         //Metodi----------------------------------------------------------------------------------
-        public float calcolaprezzoIvato(float prezzo)
+        public double calcolaprezzoIvato(double prezzo)
         {
 
-            float prezzoivato = prezzo * 1.22f;
+            double prezzoivato = prezzo * 1.22f;
             return prezzoivato;
         }
 
@@ -74,7 +74,39 @@
         {
             string codiceString = this.codice.ToString();
             string nomeEsteso = codiceString += this.nome;
+
+
         }
+
+        public void creaCodice()
+
+        {
+            Random num1 = new Random(8);
+            for (int j = 0; j < 4; j++)
+            {
+                Console.WriteLine(num1.Next());
+            }
+
+
+        }
+
+
+        public void stampaProdotto()
+        {
+            int codice = getCodice();
+            string nome = getNome();
+            string descrizione = getDescrizione();
+            double prezzo = getPrezzo();
+            int iva = getIva();
+            Console.WriteLine("Info" + " " + nome + "----------------------");
+            Console.WriteLine("Codice prodotto:" + " " + codice);
+            Console.WriteLine("Nome prodotto:" + " " + nome);
+            Console.WriteLine("Descrizione prodotto:" + " " + descrizione);
+            Console.WriteLine("Prezzo prodotto:" + " " + prezzo +"€");
+            Console.WriteLine("Iva prodotto:" + " " + iva + "%");
+            Console.WriteLine("____________________________________");
+        }
+
         //------------------------------------------------------------------------------------------
     }
 }

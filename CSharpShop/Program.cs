@@ -16,3 +16,10 @@ BONUS:
 create un metodo che restituisca il codice con un pad left di 0 per arrivare a 8 caratteri (ad esempio codice 91 diventa 00000091, mentre codice 123445567 resta come è)
 Usando una List, dichiarate una lista dei prodotti di un negozio e inseriteci al suo interno qualche prodotto che vi aspettate di trovare nel negozio. Stampate poi l’elenco dei vostri prodotti che avete previsto nel negozio.*/
 
+using CSharpShop;
+using System.Globalization;
+
+//Creo un prodotto e lo stampo//___________________________________________________
+prodotto prodottoUno = new prodotto(10,"pane", "alimentari", 3.00, 4);
+prodottoUno.stampaProdotto();
+//_________________________________________________________________________________
