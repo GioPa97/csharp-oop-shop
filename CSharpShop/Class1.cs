@@ -5,10 +5,10 @@
         private int codice;
         private string nome;
         private string descrizione;
-        private int prezzo;
+        private float prezzo;
         private int iva;
 
-        //GETTER//
+        //GETTER//--------------------------------------------------------------------------------
         public int getCodice()
         {
             return this.codice;
@@ -21,7 +21,7 @@
         {
             return this.descrizione;
         }
-        public int getPrezzo()
+        public float getPrezzo()
         {
             return this.prezzo;
         }
@@ -29,7 +29,7 @@
         {
             return this.iva;
         }
-        //SETTER//
+        //SETTER//----------------------------------------------------------------------------------
         public void setCodice(int codice)
         {
             this.codice = codice;
@@ -42,13 +42,32 @@
         {
             this.descrizione = descrizione;
         }
-        public void setPrezzo(int prezzo)
+        public void setPrezzo(float prezzo)
         {
             this.prezzo = prezzo;
         }
         public void setIva(int iva)
         {
             this.iva = iva;
+        }
+        //Costruttori----------------------------------------------------------------------------
+
+        public prodotto()
+        {
+            int codice;
+            string nome;
+            string descrizione;
+            float prezzo;
+            int iva;
+        }
+
+
+        //Metodi----------------------------------------------------------------------------------
+        public float calcolaprezzoIvato(float prezzo)
+        {
+
+            float prezzoivato = prezzo * 1.22f;
+            return prezzoivato;
         }
     }
 }
