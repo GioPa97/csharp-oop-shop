@@ -69,5 +69,12 @@
             float prezzoivato = prezzo * 1.22f;
             return prezzoivato;
         }
+
+        public void creaNomeEsteso()
+        {
+            string codiceString = this.codice.ToString();
+            string nomeEsteso = codiceString += this.nome;
+        }
+        //------------------------------------------------------------------------------------------
     }
 }
